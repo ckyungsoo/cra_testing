@@ -42,9 +42,6 @@ st.subheader('위험요소가 식별된 Engagement')
 col1, col2 = st.columns(2)
 with col1 :
     st.metric(label = '감리위험요소',value = sum_1)
-
-    
- 
     
 with col2:
     st.metric(label = '감사인감리대상', value = sum_2)
@@ -72,9 +69,15 @@ fig_3 = px.box(df[df['rsk_idx_1']=='1 감리위험요소평가'] , x = 'LoB', y 
 st.plotly_chart(fig_3, theme = "streamlit", use_contatiner_width = True)
 
 st.write('')
+st.write(df_selected_1.sort_values(by = ['risk_index'], ascending = False))
+
+st.write('')
 st.write('')
 
 #본부별 인게이지먼트별 감사인감리대상 식별 개수
 st.subheader(':blue[Engagement별로 식별한 감사인감리대상위험 개수의 분포]')
 fig_4 = px.box(df[df['rsk_idx_1']=='2 감사인 감리 대상 개별감사업무 선정'] , x = 'LoB', y = 'risk_index')
 st.plotly_chart(fig_4, theme = "streamlit", use_contatiner_width = True)
+
+st.write('')
+st.write(df_selected_2.sort_values(by = ['risk_index'], ascending = False))
